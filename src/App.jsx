@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Names from './Names';
 import Cars from './Cars';
+import Cars2 from './Cars2';
 import './App.css';
 
 const cars = [{id:101 ,brand:"Audi",make:"A1"},{id: 102,brand:"VW",make:"UP"},{id: 103,brand:"Volvo",make:"xc90"}];
@@ -15,6 +16,7 @@ function App() {
      <Wellcome name="Helga" age={23} />
      <Wellcome name="Holger" age={43} />
      <Cars cars={cars}/>
+     <Cars2 cars={cars}/>
     </div>
   )
 }
