@@ -1,8 +1,10 @@
-import { useState } from 'react';
 import Names from './Names';
 import Cars from './Cars';
 import Cars2 from './Cars2';
 import './App.css';
+import {useState} from 'react'
+import FormDemo from './FormDemo';
+import UseEffectDemo from './UseEffectDemo';
 
 const cars = [{id:101 ,brand:"Audi",make:"A1"},{id: 102,brand:"VW",make:"UP"},{id: 103,brand:"Volvo",make:"xc90"}];
 const Wellcome = (props) => {
@@ -10,6 +12,7 @@ const Wellcome = (props) => {
 }
 
 function App() {
+  const [time,setTime] = useState();
   return (
     <div className="App">
      <Names/>
@@ -17,6 +20,11 @@ function App() {
      <Wellcome name="Holger" age={43} />
      <Cars cars={cars}/>
      <Cars2 cars={cars}/>
+     <button onClick={()=>console.log("Cliked")}>Klik her</button>
+     <button onClick={()=>setTime(new Date().toLocaleTimeString())}>Se hvad klokken er</button>
+     <h1>{time}</h1>
+     <FormDemo/>
+     <UseEffectDemo/>
     </div>
   )
 }

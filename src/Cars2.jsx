@@ -6,25 +6,9 @@ import {useState} from 'react';
 const Cars2 = (props) => {
     const [cars, setCars] = useState(props.cars);
 
-    // componentDidMount() {
-    //     this.time = setInterval(() => {
-    //         this.changeTime()
-    //     }, 1000)
-    // }
-
-    // componentWillUnmount() {
-    //     clearInterval(this.time)
-    // }
-
-    // changeTime() {
-    //     this.setState({ date: new Date() })
-    // }
-
-    // render() {
         return (
             <div className="clock">
                 <p>Hello! This is a class component clock.</p>
-                {/* <h2>It is {this.state.date.toLocaleTimeString()}.</h2> */}
                 <ul>
                 {cars.map((car)=><li key={car.id}>{car.make}</li>)}
                 </ul>
