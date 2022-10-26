@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react';
 function BookService() {
     const [books, setBooks] = useState([]);
+    const [booksChanged, setBooksChanged] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:4000/books')
-            .then((res) => res.json())
-            .then(data => {
-                setBooks(data);
-            });
-    },[]);
+        const getData = async () => {
+            const response = await fetch('http://localhost:4000/books');
+            const data = await response.json();
+            setBooks(data);
+        }
+        getData();
+        
+            // .then((res) => res.json())
+            // .then(data => {
+            //     setBooks(data);
+            // });
+    },[booksChanged]);
     return (
         <>
-            <BookForm/>
+            <BookForm isChanged={setBooksChanged}/>
             <table>
                 <thead>
                     <tr><th>ID</th><th>TITLE</th><th>AUTHOR</th><th>RATING</th><th>PUBLISHED</th></tr>
@@ -36,7 +43,7 @@ function BookService() {
         </>
     );
 }
-const BookForm = () => {
+const BookForm = (props) => {
     const [newBook, setNewBook] = useState({});
     const update = (evt) => {
         const value = evt.target.value;
@@ -55,7 +62,8 @@ const BookForm = () => {
           })
           .then((res)=>res.json())
           .then((data)=>{
-            console.log(data);
+            console.log('DATA:', data);
+            props.isChanged(true);
         });
     }
     return (
